@@ -6,14 +6,15 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Name {
-	public HashMap<String, String> getNames(File file) {
+	public Map<String, String> readNames(File file) {
 	    String line = new String();
 	    // Initialize reader object
 	    BufferedReader reader = null;
 	    // hashmap for id to name
-	    HashMap<String,String> map = new HashMap<String, String>();
+	    Map<String,String> map = new HashMap<String, String>();
 	    // try-catch block to read name.csv data
 	    try {
 	        reader = new BufferedReader(new FileReader(file));
@@ -29,13 +30,15 @@ public class Name {
 	        }
 	    }
 	    catch (FileNotFoundException fne) {
-	    	// Catch block in case of file not found
 	    	System.out.println(fne);
 	    }
 	    catch (IOException ioe) {
-	    	// Catch block in case of IOexception error when opening file
 	    	System.out.println(ioe);
 	    }
+	    catch (Exception e) {
+			// Catch block for all remaining errors
+			System.out.println(e);
+		}
 	    finally {
 	        if (reader != null) {
 	        	// try-catch block to close phone.csv file
